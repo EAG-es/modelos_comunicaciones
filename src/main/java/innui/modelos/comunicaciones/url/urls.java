@@ -5,6 +5,7 @@
  */
 package innui.modelos.comunicaciones.url;
 
+import innui.bases;
 import innui.modelos.configuraciones.ResourceBundles;
 import innui.modelos.errores.oks;
 import innui.modelos.internacionalizacion.tr;
@@ -14,7 +15,6 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 /**
  * Clase para manejar URLs
  */
-public class Urls {
+public class urls extends bases {
     public static String k_in_ruta = "in/innui/url/in";
     /**
      * Protocolo por defecto 
@@ -32,29 +32,32 @@ public class Urls {
     public static String k_protocolo_por_defecto = "https"; //NOI18N
     public static ResourceBundle in = null;
     
-    public Urls() throws Exception {
+    public urls() throws Exception {
         in = ResourceBundles.getBundle(k_in_ruta);
     }
     /**
      * Obtiene los parámetros de la consulta de una url
      * @param url URL de donde extraerlos.
      * @param objects_mapa Mapa donde almacenar las claves y los valores extraidos.
-     * @param error mensaje de error, si lo hay.
+     * @param ok
+     * @param extras_array
      * @return true si tiene éxito, false si hay algún error
+     * @throws java.lang.Exception
      */
     public static boolean extraer_parametros_query(URL url, Map<String, String> objects_mapa, oks ok, Object ... extras_array) throws Exception {
-        boolean ret = true;
         String mensaje;
         mensaje = url.getQuery();
-        ret = extraer_parametros_texto(mensaje, objects_mapa, ok);
-        return ret;
+        extraer_parametros_texto(mensaje, objects_mapa, ok);
+        return ok.es;
     }
     /**
      * Obtiene los parámetros de la consulta de una url
      * @param texto Texto de donde extraerlos.
      * @param objects_mapa Mapa donde almacenar las claves y los valores extraidos.
-     * @param error mensaje de error, si lo hay.
+     * @param ok
+     * @param extras_array
      * @return true si tiene éxito, false si hay algún error
+     * @throws java.lang.Exception
      */
     public static boolean extraer_parametros_texto(String texto, Map<String, String> objects_mapa, oks ok, Object ... extras_array) throws Exception {
         boolean ret = true;
@@ -116,8 +119,10 @@ public class Urls {
      * Extrae la parte de la ruta de la url que sigue al macador indicado.
      * @param url_texto Texto con la URlL de la que extraer la ruta
      * @param marcador Marcdor que buscar en la ruta, a partir del que extraer.
-     * @param error mensaje de error, si lo hay.
+     * @param ok
+     * @param extras_array
      * @return El path dentro de la URL; o null si no encuentra el marcador
+     * @throws java.lang.Exception
      */
     public static String extraer_path(String url_texto, String marcador, oks ok, Object ... extras_array) throws Exception {
         String resto = null; 
@@ -145,8 +150,10 @@ public class Urls {
     /**
      * Extrae el protocolo de un texto con una URL
      * @param url_texto Texto con la URlL de la que extraer el protocolo.
-     * @param error mensaje de error, si lo hay.
+     * @param ok
+     * @param extras_array
      * @return El protocolo si tiene éxito, null si hay algún error
+     * @throws java.lang.Exception
      */
     public static String extraer_protocolo(String url_texto, oks ok, Object ... extras_array) throws Exception {
         String retorno = null; 
@@ -161,11 +168,12 @@ public class Urls {
      * Extrae las subcarpetas de una ruta de url.
      * @param ruta Ruta de url de la que extraer
      * @param url_fragmentos_path_lista Lista conteniendo las subcarpetas.
-     * @param error mensaje de error, si lo hay.
+     * @param ok
+     * @param extras_array
      * @return true si tiene éxito, false si hay algún error
+     * @throws java.lang.Exception
      */
     public static boolean extraer_fragmentos_path(String ruta, List <String> url_fragmentos_path_lista, oks ok, Object ... extras_array) throws Exception {
-        boolean ret = true;
         String [] resto_partes_array = ruta.split("/"); //NOI18N
         int i = 0;
         for (String parte: resto_partes_array) {
@@ -174,14 +182,16 @@ public class Urls {
                 i = i + 1;
             }
         }
-        return ret;
+        return ok.es;
     }
     /**
      * Añade el protocolo a un texto con una url, si no lo tiene.
      * @param url_texto Texto con la URL
      * @param protocolo_si_falta Protocolo que poner, si falta.
-     * @param error mensaje de error, si lo hay.
+     * @param ok
+     * @param extras_array
      * @return la URL coimpletada con el protocolo, null si hay error.
+     * @throws java.lang.Exception
      */
     public static URL completar_URL(String url_texto, String protocolo_si_falta, oks ok, Object ... extras_array) throws Exception {
         URL retorno = null;
@@ -208,7 +218,14 @@ public class Urls {
         }
         return retorno;
     }
-            
+    /**
+     * 
+     * @param uri_texto
+     * @param ok
+     * @param extras_array
+     * @return
+     * @throws Exception 
+     */        
     public static URI generar_uri(String uri_texto, oks ok, Object ... extras_array) throws Exception {
         URI retorno = null;
         URL url = null;
