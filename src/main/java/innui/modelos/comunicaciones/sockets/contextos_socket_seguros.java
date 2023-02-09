@@ -50,9 +50,13 @@ public class contextos_socket_seguros extends bases {
      * @param modo null, no se cambia. Las opciones de modo, comienzan por: k_modo
      * @param protocolo_de_autenticacion null, no se cambia. Las opciones de protocolo de autenticacion, comienzan por: k_protocolo_con_autenticacion
      * @param numero_seguro_aleatorio null, no se cambia. Número seguro aleatorio.
+     * @param ok
+     * @param extra_array
      * @return true si todo es correcto, false si hay error.
+     * @throws java.lang.Exception
      */
-    public boolean preconfigurar(Integer modo, Integer protocolo_de_autenticacion, SecureRandom numero_seguro_aleatorio, oks ok, Object... extra_array) throws Exception {
+    public boolean preconfigurar(Integer modo, Integer protocolo_de_autenticacion, SecureRandom numero_seguro_aleatorio
+            , oks ok, Object... extra_array) throws Exception {
         if (ok.es == false) { return ok.es; }
         if (modo != null) {
             this.modo = modo;
