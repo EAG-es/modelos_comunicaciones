@@ -1,8 +1,6 @@
 package incli.restful.jdbc_servidor_https_spring;
 
 import innui.modelos.errores.oks;
-import innui.modelos.jdbc.clabs;
-import innui.modelos.jdbc.jdbcs;
 import innui.modelos.jdbc.sql_comandos;
 import java.util.Calendar;
 import static org.junit.Assert.assertEquals;
