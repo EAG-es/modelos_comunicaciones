@@ -128,6 +128,7 @@ public class cliente_jdbc_servidor_httpsTest {
         , "direccion_numero", "direccion_parte_extra_numero", "direccion_piso"
         , "direccion_puerta", "direccion_parte_extra_puerta", "ciudad", "codigo_postal"
         , "provincia_o_estado", "pais", "contraseña", "fecha_inicio_validez", "comentarios");
+        assertTrue(ok.es);
         String comando = "select <columnas> from personas order by apellidos limit ?, ?";
         sql_comando.leer_iniciar(comando, ok, extra_array);
         assertTrue(ok.es);

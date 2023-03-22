@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package innui.modelos.modelos_comunicaciones;
 
 import innui.modelos.configuraciones.iniciales;
@@ -51,6 +47,13 @@ public class modelos_comunicaciones extends iniciales {
         try {
             if (ok.es == false) { return ok.es; }
             iniciar(ok);
+            if (ok.es) {
+                oks ok_fin = new oks();
+                terminar(ok_fin);
+                if (ok_fin.es == false) {
+                    ok.setTxt(ok.getTxt(), ok_fin.getTxt());
+                }
+            }
             return ok.es;
         } catch (Exception e) {
             throw e;
