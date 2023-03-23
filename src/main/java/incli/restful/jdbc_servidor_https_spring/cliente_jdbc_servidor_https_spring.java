@@ -164,7 +164,7 @@ public class cliente_jdbc_servidor_https_spring {
             multivaluedMap.add(jdbc_servidor_usuario_tex, jdbc_usuario);
             multivaluedMap.add(jdbc_servidor_clave_tex, jdbc_contraseña);
             builder = builder.headers(multivaluedMap);
-            builder = builder.accept(MediaType.TEXT_PLAIN);
+            builder = builder.accept(MediaType.APPLICATION_JSON);
             entity = jakarta.ws.rs.client.Entity.entity(sql_comando, MediaType.APPLICATION_JSON);
             response = builder.post(entity);
             status = response.getStatus();
@@ -238,7 +238,7 @@ public class cliente_jdbc_servidor_https_spring {
             multivaluedMap.add(jdbc_servidor_usuario_tex, jdbc_usuario);
             multivaluedMap.add(jdbc_servidor_clave_tex, jdbc_contraseña);
             builder = builder.headers(multivaluedMap);
-            builder = builder.accept(MediaType.TEXT_PLAIN);
+            builder = builder.accept(MediaType.APPLICATION_JSON);
             entity = jakarta.ws.rs.client.Entity.entity(sql_comando, MediaType.APPLICATION_JSON);
             response = builder.post(entity);
             status = response.getStatus();
@@ -273,7 +273,7 @@ public class cliente_jdbc_servidor_https_spring {
             multivaluedMap.add(jdbc_servidor_usuario_tex, jdbc_usuario);
             multivaluedMap.add(jdbc_servidor_clave_tex, jdbc_contraseña);
             builder = builder.headers(multivaluedMap);
-            builder = builder.accept(MediaType.TEXT_PLAIN);
+            builder = builder.accept(MediaType.APPLICATION_JSON);
             entity = jakarta.ws.rs.client.Entity.entity(sql_comando, MediaType.APPLICATION_JSON);
             response = builder.post(entity);
             status = response.getStatus();
