@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package incli.restful.jdbc_servidor_https_spring;
 
 import innui.modelos.comunicaciones.sockets.sslcontext_cliente_sin_verificar_hostnames;
@@ -18,7 +13,6 @@ import jakarta.ws.rs.core.MultivaluedHashMap;
 import jakarta.ws.rs.core.MultivaluedMap;
 import jakarta.ws.rs.core.Response;
 import java.net.URI;
-import java.util.ResourceBundle;
 import org.glassfish.jersey.client.ClientProperties;
 
 /**
