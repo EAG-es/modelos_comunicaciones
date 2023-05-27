@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
  * Clase para los atributos de las etiqueta HTML
  */
 public class atributos extends bases {
-    public static String k_in_ruta = "in/innui.modelos.comunicaciones.url/in";
+    public static String k_in_ruta = "in/innui/modelos/comunicaciones/url/in";
     
     /**
      * Dado un nombre de atributo, extrae su valor de una etiqueta.

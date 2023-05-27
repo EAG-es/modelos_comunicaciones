@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * Clase para manejar URLs
  */
 public class urls extends bases {
-    public static String k_in_ruta = "in/innui/url/in";
+    public static String k_in_ruta = "in/innui/modelos/comunicaciones/url/in";
     /**
      * Protocolo por defecto 
      */
