@@ -25,7 +25,12 @@ import java.util.ResourceBundle;
  * Clase para manejar URLs
  */
 public class urls extends bases {
-    public static String k_in_ruta = "in/innui/modelos/comunicaciones/url/in";
+    public static String k_in_ruta;
+    static {
+        String paquete_tex = urls.class.getPackage().getName();
+        paquete_tex = paquete_tex.replace(".", File.separator);
+        k_in_ruta = "in/" + paquete_tex + "/in";
+    }
     /**
      * Protocolo por defecto 
      */
@@ -65,6 +70,7 @@ public class urls extends bases {
         String clave;
         Map<String, List<String>> listas_mapa = new LinkedHashMap<>();
         List <String> lista;
+        ResourceBundle in = null;        
         try {
             if (texto != null && texto.isEmpty() == false) {
                 String [] parametros_array = texto.split("&"); //NOI18N
@@ -80,6 +86,7 @@ public class urls extends bases {
                         partes_array[1] = ""; //NOI18N
                     } else {
                         ret = false;
+                        in = ResourceBundles.getBundle(k_in_ruta);
                         ok.setTxt(tr.in(in, "NO SE HAN RECONOCIDO LOS PARÁMETROS. "));
                         break;
                     }
@@ -109,6 +116,7 @@ public class urls extends bases {
                 }
             }
         } catch (Exception e) {
+            in = ResourceBundles.getBundle(k_in_ruta);
             ok.setTxt(java.text.MessageFormat.format(tr.in(in, "ERROR AL EXTRAER LOS PARAMETROS DE LA QUERY. {0}"), new Object[] {""})
             , e);
             ret = false;
@@ -197,6 +205,7 @@ public class urls extends bases {
         URL retorno = null;
         String texto;
         String url_path = ""; //NOI18N
+        ResourceBundle in = null;
         try {
             url_path = extraer_path(url_texto, "", ok); //NOI18N
             if (url_path != null) {
@@ -212,6 +221,7 @@ public class urls extends bases {
                 }
             }
         } catch (Exception e) {
+            in = ResourceBundles.getBundle(k_in_ruta);
             ok.setTxt(java.text.MessageFormat.format(tr.in(in, "ERROR EN COMPLETAR_URL. {0}"), new Object[] {""})
                 , e);
             retorno = null;
@@ -234,6 +244,7 @@ public class urls extends bases {
         String fragmento = "";
         String [] query_array;
         String [] param_array;
+        ResourceBundle in = null;
         try {
             url = new URL(uri_texto);
             retorno = url.toURI();
@@ -308,6 +319,7 @@ public class urls extends bases {
                     url = new URL(uri_texto);
                     retorno = url.toURI();
                 } catch (Exception e) {
+                    in = ResourceBundles.getBundle(k_in_ruta);
                     ok.setTxt(java.text.MessageFormat.format(tr.in(in, "NO SE HA PODIDO ENTENDER LA DIRECCIÓN WEB INDICADA. {0}"), new Object[] {""})
                         , e);
                     retorno = null;
